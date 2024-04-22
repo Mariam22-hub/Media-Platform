@@ -6,7 +6,6 @@ const GlobalContext = React.createContext()
 //actions
 const LOADING = 'LOADING'
 const SET_MEDIA = 'SET_MEDIA'
-// const SET_SELECTED_MEDIA = 'SET_SELECTED_MEDIA'
 const TOGGLE_LIKE = 'TOGGLE_LIKE';
 const DELETE_MEDIA = 'DELETE_MEDIA';
 
@@ -60,35 +59,6 @@ const reducer = (state, action) => {
     }
 }
 
-// const reducer = (state, action) => {
-//     switch(action.type){
-//         case LOADING:
-//             return {...state, loading: true}
-        // case SET_MEDIA:
-        //     if (!Array.isArray(action.payload)) {
-        //             console.error('Expected an array for SET_MEDIA, received:', action.payload);
-        //             return {
-        //                 ...state,
-        //                 loading: false,
-        //                 media: []
-        //             };
-        //     }
-        //     return{
-        //         ...state,
-        //         loading: false,
-        //         media: [
-        //             ...action.payload.map((file) => {
-        //                 return{
-        //                     ...file,
-        //                     mediaUrl: file.mediaUrl 
-        //                 }
-        //             })
-        //         ]
-        //     }
-//         default:
-//             return state
-//     }
-// }
 
 export const GlobalProvider = ({children}) => {
     
@@ -99,7 +69,6 @@ export const GlobalProvider = ({children}) => {
 
     const [state, dispatch] = React.useReducer(reducer, initialState)
     
-    // get all media
     const fetchMedia = async () => {
         try {
             const response = await axios.get('https://minly-task-jc4q.onrender.com',{
@@ -107,7 +76,7 @@ export const GlobalProvider = ({children}) => {
                     'Content-Type': 'multipart/form-data'
                 } 
             })
-            console.log(response)
+            // console.log(response)
 
             dispatch({type: SET_MEDIA, payload: response.data.data.result.data})
         } 
@@ -120,7 +89,7 @@ export const GlobalProvider = ({children}) => {
         try {
             console.log(id)
             const response = await axios.put(`https://minly-task-jc4q.onrender.com/toggle/${id}`);
-            console.log(response)
+            // console.log(response)
             if (response.status === 200) {
                 dispatch({ type: TOGGLE_LIKE, payload: id });
                 fetchMedia()
@@ -134,6 +103,7 @@ export const GlobalProvider = ({children}) => {
         try {
             const response = await axios.delete(`https://minly-task-jc4q.onrender.com/delete/${id}`);
             alert("Media is being deleted")
+            
             if (response.status === 200) {
                 dispatch({ type: DELETE_MEDIA, payload: id });
                 alert("Media Deleted")
@@ -149,12 +119,38 @@ export const GlobalProvider = ({children}) => {
         }
     };
 
+    const uploadMedia = async (formData) => {
+        alert("Upload processing...")
+        dispatch({type: LOADING});
+        try {
+            
+            await axios.post('https://minly-task-jc4q.onrender.com/upload', formData, {
+                headers: {"Content-Type": "multipart/form-data"}
+            });
+
+            alert("Media succefully uploaded")
+            fetchMedia();
+            
+            // const response = await axios.post('https://minly-task-jc4q.onrender.com/upload', formData, {
+            //     headers: {"Content-Type": "multipart/form-data"}
+            // });
+            // if (response.status === 202) {
+            //     alert("Media succefully uploaded")
+            //     fetchMedia();
+            // }
+        } 
+        catch (error) {
+            alert("Failed to upload media")
+            console.error('Error uploading media:', error);
+        }
+    };
+
     useEffect(() => {
         fetchMedia()
     }, [])
 
     return (
-        <GlobalContext.Provider value={{ ...state, fetchMedia, toggleLike, deleteMedia }}>
+        <GlobalContext.Provider value={{ ...state, fetchMedia, toggleLike, deleteMedia, uploadMedia }}>
             {children}
         </GlobalContext.Provider>
     );

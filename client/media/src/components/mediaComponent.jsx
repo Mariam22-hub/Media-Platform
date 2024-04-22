@@ -4,8 +4,6 @@ import { useGlobalContext } from '../context/globalContext';
 
 function Media() {
     const { media, toggleLike, deleteMedia} = useGlobalContext();
-    const [openMenuId, setOpenMenuId] = React.useState(null);
-
 
     return (
         <MediaStyled>
@@ -47,12 +45,6 @@ function Media() {
                                         <li><a className="dropdown-item text-danger" onClick={() => deleteMedia(item._id)}>Delete</a></li>
                                     </ul>
                                 </div>
-                                {/* <button className="menu-button" onClick={() => toggleMenu(item._id)}>⋮</button>
-                                {openMenuId === item._id && (
-                                    <div className="dropdown-menu active">
-                                        <div className="menu-item" onClick={() => deleteMedia(item._id)}>Delete Media</div>
-                                    </div>
-                                )} */}
                             </div>
                         </div>
                     );
@@ -125,39 +117,6 @@ const MediaStyled = styled.div`
                         line-height: 1.4rem;
                     }
                 }
-                // .dropdown-menu {
-                //     position: absolute;
-                //     background-color: #f9f9f9;
-                //     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-                //     z-index: 1;
-                //     right: 10px;
-                //     display: none;
-
-                //     &.active {
-                //         display: block;
-                //     }
-                // }
-
-                // .menu-item {
-                //     color: black;
-                //     padding: 12px 16px;
-                //     text-decoration: none;
-                //     display: block;
-                //     cursor: pointer;
-
-                //     &:hover {
-                //         background-color: #f1f1f1;
-                //     }
-                // }
-
-                // .menu-button {
-                //     background: none;
-                //     border: none;
-                //     cursor: pointer;
-                //     font-size: 1.5rem;
-                //     padding: 0.25rem 0.5rem;
-                //     color: white;
-                // }
                 
             }
         }

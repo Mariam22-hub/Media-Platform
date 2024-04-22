@@ -7,10 +7,9 @@ import axios from "axios"
 axios.defaults.timeout = 120000;
 
 function UploadComponent(props) {
-    const {fetchMedia} = useGlobalContext()
+    const {fetchMedia, uploadMedia} = useGlobalContext()
 
     const [media, setMedia] = React.useState(null);
-    const [newMedia, setNewMedia] = React.useState(null)
     const [title, setTitle] = React.useState('');
     const [description, setDescription] = React.useState('');
     const [label, setLabel] = React.useState('Upload your media...');
@@ -46,35 +45,37 @@ function UploadComponent(props) {
             formData.append('description', e.target.description.value)
             formData.append('file', e.target.media.files[0]);
             
-            try {
-                const response = await axios.post('https://minly-task-jc4q.onrender.com/upload', formData, {
-                    headers:{"Accept":"application/json, text/plain, /","Content-Type": "multipart/form-data"}
-                });
+            await uploadMedia(formData);
+        //     try {
+        //         const response = await axios.post('https://minly-task-jc4q.onrender.com/upload', formData, {
+        //             headers:{"Accept":"application/json, text/plain, /","Content-Type": "multipart/form-data"}
+        //         });
 
-                if (response.status == 202) {
-                    alert("File has uploaded...")
-                }
+        //         if (response.status == 202) {
+        //             alert("File has uploaded...")
+        //         }
 
-                fetchMedia();
-            } 
-            catch (error) {
-                fetchMedia();
-                if (error.response) {
-                // The request was made and the server responded with a status code
-                // that falls out of the range of 2xx
-                    console.log(error.response.data);
-                    console.log(error.response.status);
-                    console.log(error.response.headers);
-                } else if (error.request) {
-                // The request was made but no response was received
-                // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
-                // http.ClientRequest in node.js
-                    console.log(error.request);
-                } else {
-                // Something happened in setting up the request that triggered an Error
-                    console.log('Error', error.message);
-                }
-            } 
+        //         fetchMedia();
+        //     } 
+        //     catch (error) {
+        //         fetchMedia();
+        //         if (error.response) {
+        //         // The request was made and the server responded with a status code
+        //         // that falls out of the range of 2xx
+        //             console.log(error.response.data);
+        //             console.log(error.response.status);
+        //             console.log(error.response.headers);
+        //         } else if (error.request) {
+        //         // The request was made but no response was received
+        //         // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+        //         // http.ClientRequest in node.js
+        //             console.log(error.request);
+        //         } else {
+        //         // Something happened in setting up the request that triggered an Error
+        //             console.log('Error', error.message);
+        //         }
+        //     } 
+        // }
         }
         else{
             alert('Please add a Title')
@@ -89,23 +90,25 @@ function UploadComponent(props) {
 
 
     React.useEffect(() => {
-        console.log("in event source")
-        const eventSource = new EventSource('https://minly-task-jc4q.onrender.com/events');
-        eventSource.onmessage = function(event) {
-            console.log('Event received:', event.data);
-            const { message, media } = JSON.parse(event.data);
-            alert(message);
-            fetchMedia()
-        };
+        fetchMedia();
+        // console.log("in event source")
+        // const eventSource = new EventSource('https://minly-task-jc4q.onrender.com/events');
+        
+        // eventSource.onmessage = function(event) {
+        //     console.log('Event received:', event.data);
+        //     const { message } = JSON.parse(event.data);
+        //     alert(message);
+        //     fetchMedia()
+        // };
 
-        eventSource.onerror = function(event) {
-            console.error('EventSource failed:', event);
-            eventSource.close();
-        };
+        // eventSource.onerror = function(event) {
+        //     console.error('EventSource failed:', event);
+        //     eventSource.close();
+        // };
 
-        return () => {
-            eventSource.close();
-        };
+        // return () => {
+        //     eventSource.close();
+        // };
     }, [fetchMedia]);
 
     return (
@@ -149,7 +152,7 @@ function UploadComponent(props) {
                         <label 
                             className='inner-label' 
                             htmlFor="media"
-                            style={{color: media ? '#00b894' : 'rgb(74 74 74)'}}
+                            style={{color: media ? '#AA336A' : 'rgb(74 74 74)'}}
                             >
                                 {label}
                         </label>
@@ -166,7 +169,7 @@ function UploadComponent(props) {
                     <div className="upload-btn">
                         <ButtonComponent     
                             name="Upload"
-                            bg={"#00b894"}
+                            bg={"#AA336A"}
                             type="submit"
                             disabled={loading}
                         />
