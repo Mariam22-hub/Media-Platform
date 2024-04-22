@@ -52,7 +52,7 @@ export const addFilesController = async (req: express.Request, res: express.Resp
         
         if (result) {
           console.log("media saved successfully");
-          sendStatusToAllClients({ message: 'New media added', media: data });
+          // sendStatusToAllClients({ message: 'New media added', media: data });
           res.json({ status: "success", data: result });
         }
 
