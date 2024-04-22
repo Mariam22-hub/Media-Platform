@@ -120,7 +120,7 @@ export const GlobalProvider = ({children}) => {
     };
 
     const uploadMedia = async (formData) => {
-        alert("Upload processing...")
+        alert("Upload processing...We will notify you when the file is uploaded")
         dispatch({type: LOADING});
         try {
             console.log("in upload media")
