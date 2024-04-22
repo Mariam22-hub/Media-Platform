@@ -23,12 +23,12 @@ const server = http.createServer(app);
 connectDB();
 
 const corsOptions = {
-    origin: ['http://localhost:5173'], // Allow only this origin to access
-    optionsSuccessStatus: 200, // Some legacy browsers choke on 204
-    credentials: true // Allow cookies to be sent
+    origin: ['http://localhost:5173'],
+    optionsSuccessStatus: 200, 
+    credentials: true,
+    methods: ["GET", "POST", "PATCH", "DELETE"]
 };
 
-// Use CORS middleware for all routes
 app.use(cors(corsOptions));
 app.options('*', cors(corsOptions)); 
 app.use(require("./src/middlewares/timeout"));

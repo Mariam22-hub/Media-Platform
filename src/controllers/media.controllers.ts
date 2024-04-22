@@ -35,7 +35,7 @@ export const addFilesController = async (req: express.Request, res: express.Resp
         const storageRef = ref(storage, `files/${filePrefix}/${req.file.originalname}`);
         const metadata = { contentType: req.file.mimetype };
 
-        sendStatusToAllClients({ message: "Upload received, processing..."});
+        // sendStatusToAllClients({ message: "Upload received, processing..."});
 
         const snapshot = await uploadBytesResumable(storageRef, req.file.buffer, metadata);
         const downloadURL = await getDownloadURL(snapshot.ref);
