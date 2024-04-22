@@ -130,14 +130,7 @@ export const GlobalProvider = ({children}) => {
 
             alert("Media succefully uploaded")
             fetchMedia();
-            
-            // const response = await axios.post('https://minly-task-jc4q.onrender.com/upload', formData, {
-            //     headers: {"Content-Type": "multipart/form-data"}
-            // });
-            // if (response.status === 202) {
-            //     alert("Media succefully uploaded")
-            //     fetchMedia();
-            // }
+
         } 
         catch (error) {
             alert("Failed to upload media")

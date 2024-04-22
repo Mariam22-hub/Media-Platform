@@ -37,45 +37,12 @@ function UploadComponent(props) {
 
         if(title){
             const formData = new FormData();
-            // console.log(e.target.title.value)
-            // console.log(e.target.description.value)
-            // console.log(e.target.media.files[0])
 
             formData.append('title', e.target.title.value)
             formData.append('description', e.target.description.value)
             formData.append('file', e.target.media.files[0]);
             
             await uploadMedia(formData);
-        //     try {
-        //         const response = await axios.post('https://minly-task-jc4q.onrender.com/upload', formData, {
-        //             headers:{"Accept":"application/json, text/plain, /","Content-Type": "multipart/form-data"}
-        //         });
-
-        //         if (response.status == 202) {
-        //             alert("File has uploaded...")
-        //         }
-
-        //         fetchMedia();
-        //     } 
-        //     catch (error) {
-        //         fetchMedia();
-        //         if (error.response) {
-        //         // The request was made and the server responded with a status code
-        //         // that falls out of the range of 2xx
-        //             console.log(error.response.data);
-        //             console.log(error.response.status);
-        //             console.log(error.response.headers);
-        //         } else if (error.request) {
-        //         // The request was made but no response was received
-        //         // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
-        //         // http.ClientRequest in node.js
-        //             console.log(error.request);
-        //         } else {
-        //         // Something happened in setting up the request that triggered an Error
-        //             console.log('Error', error.message);
-        //         }
-        //     } 
-        // }
         }
         else{
             alert('Please add a Title')
@@ -91,24 +58,6 @@ function UploadComponent(props) {
 
     React.useEffect(() => {
         fetchMedia();
-        // console.log("in event source")
-        // const eventSource = new EventSource('https://minly-task-jc4q.onrender.com/events');
-        
-        // eventSource.onmessage = function(event) {
-        //     console.log('Event received:', event.data);
-        //     const { message } = JSON.parse(event.data);
-        //     alert(message);
-        //     fetchMedia()
-        // };
-
-        // eventSource.onerror = function(event) {
-        //     console.error('EventSource failed:', event);
-        //     eventSource.close();
-        // };
-
-        // return () => {
-        //     eventSource.close();
-        // };
     }, [fetchMedia]);
 
     return (
