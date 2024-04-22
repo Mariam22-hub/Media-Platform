@@ -5,7 +5,6 @@ initializeApp(firebaseConfig.firebaseConfig);
 
 import express from 'express';
 import http from 'http';
-import { Server } from 'socket.io';
 import cors from "cors";
 import connectDB from "./src/db"; 
 import router from "./src/routes/media.routes";
@@ -20,13 +19,6 @@ let clients: Client[] = [];
 const app = express();
 
 const server = http.createServer(app);
-const io = new Server(server, {
-  cors: {
-    origin: "http://localhost:5173",
-    credentials: true,
-    methods: ["GET", "POST"],
-  }
-});
 
 connectDB();
 
