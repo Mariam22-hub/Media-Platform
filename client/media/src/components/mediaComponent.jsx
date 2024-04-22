@@ -6,9 +6,6 @@ function Media() {
     const { media, toggleLike, deleteMedia} = useGlobalContext();
     const [openMenuId, setOpenMenuId] = React.useState(null);
 
-    // const toggleMenu = (id) => {
-    //     setOpenMenuId(openMenuId === id ? null : id);
-    // };
 
     return (
         <MediaStyled>
@@ -116,7 +113,7 @@ const MediaStyled = styled.div`
 
                 .text-container {
                     h4 {
-                        color: #32ffce;
+                        color: white;
                         font-size: 1.5rem;
                         font-weight: 500;
                     }

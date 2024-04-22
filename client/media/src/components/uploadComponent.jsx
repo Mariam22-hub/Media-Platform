@@ -47,7 +47,7 @@ function UploadComponent(props) {
             formData.append('file', e.target.media.files[0]);
             
             try {
-                const response = await axios.post('http://localhost:3001/upload', formData, {
+                const response = await axios.post('https://minly-task-jc4q.onrender.com/upload', formData, {
                     headers:{"Accept":"application/json, text/plain, /","Content-Type": "multipart/form-data"}
                 });
 
@@ -90,7 +90,7 @@ function UploadComponent(props) {
 
     React.useEffect(() => {
         console.log("in event source")
-        const eventSource = new EventSource('http://localhost:3001/events');
+        const eventSource = new EventSource('https://minly-task-jc4q.onrender.com/events');
         eventSource.onmessage = function(event) {
             console.log('Event received:', event.data);
             const { message, media } = JSON.parse(event.data);

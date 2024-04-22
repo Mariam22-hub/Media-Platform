@@ -102,7 +102,7 @@ export const GlobalProvider = ({children}) => {
     // get all media
     const fetchMedia = async () => {
         try {
-            const response = await axios.get('http://localhost:3001',{
+            const response = await axios.get('https://minly-task-jc4q.onrender.com',{
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 } 
@@ -119,7 +119,7 @@ export const GlobalProvider = ({children}) => {
     const toggleLike = async (id) => {
         try {
             console.log(id)
-            const response = await axios.put(`http://localhost:3001/toggle/${id}`);
+            const response = await axios.put(`https://minly-task-jc4q.onrender.com/toggle/${id}`);
             console.log(response)
             if (response.status === 200) {
                 dispatch({ type: TOGGLE_LIKE, payload: id });
@@ -132,7 +132,7 @@ export const GlobalProvider = ({children}) => {
 
     const deleteMedia = async (id) => {
         try {
-            const response = await axios.delete(`http://localhost:3001/delete/${id}`);
+            const response = await axios.delete(`https://minly-task-jc4q.onrender.com/delete/${id}`);
             alert("Media is being deleted")
             if (response.status === 200) {
                 dispatch({ type: DELETE_MEDIA, payload: id });
