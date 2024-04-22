@@ -123,7 +123,7 @@ export const GlobalProvider = ({children}) => {
         alert("Upload processing...")
         dispatch({type: LOADING});
         try {
-            
+            console.log("in upload media")
             await axios.post('https://minly-task-jc4q.onrender.com/upload', formData, {
                 headers: {"Content-Type": "multipart/form-data"}
             });
