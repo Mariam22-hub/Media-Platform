@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:minly_app/screens/mediaPlatform_sceen.dart';
+import 'package:minly_app/views/mediaPlatform_sceen.dart';
 
 void main() {
   runApp(const MyApp());
