@@ -1,5 +1,3 @@
-# Minly Media Management Application
-
 ## Project Overview
 
 This Flutter project is a media management application designed to handle media files such as images and videos. Users can upload, view, and manage media content with functionalities like like, delete, and refresh actions. The application interacts with a backend service for media storage and management.
