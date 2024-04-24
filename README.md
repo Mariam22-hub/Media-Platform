@@ -13,7 +13,7 @@ This project provides a frontend service for managing media files (images and vi
 1. **Clone the repository:**
    ```bash
    git clone the repository
-   navigate to the client/media folder
+   navigate to frontend branch
    npm install
    
 2. **Start the vite server:**
