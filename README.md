@@ -14,15 +14,15 @@ This project provides a backend service for managing media files (images and vid
 1. **Clone the repository:**
    ```bash
    git clone the repository
-   open the main folder, where the src folder is included
-   npm install 
+   onavigate to the backend branch
+   run: npm install 
 
 2. **Start the server:**
 The server is hosted on render with the url
 ```bash
 https://minly-task-jc4q.onrender.com
 ```
-However, to start the local server, write
+However, to start the local server, run
 ```bash
 npm run start
 ```
