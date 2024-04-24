@@ -31,6 +31,9 @@ file_picker: To pick files from the device.
 video_player: To play video files.
 cached_network_image: For efficient image loading and caching.
 
+### Architecture
+I have utilized the MVVM architecture throughout this project
+
 ### Note:
 - It's recommended to download the apk on your devices as the functionality of picking media from the gallery doesnt work on emulators
 - The application uses the api using the hosted url
