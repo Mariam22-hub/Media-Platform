@@ -24,14 +24,14 @@ This Flutter project is a media management application designed to handle media 
 ### Dependencies
 List of major libraries used in this project:
 
-dio: For making HTTP requests.
-file_picker: To pick files from the device.
-video_player: To play video files.
-cached_network_image: For efficient image loading and caching.
+1) dio: For making HTTP requests.
+2) file_picker: To pick files from the device.
+3) video_player: To play video files.
+4) cached_network_image: For efficient image loading and caching.
 
 ### Architecture
 I have utilized the MVVM architecture throughout this project
 
 ### Note:
 - It's recommended to download the apk on your devices as the functionality of picking media from the gallery doesnt work on emulators
-- The application uses the api using the hosted url
+- The application uses the api of the hosted url
