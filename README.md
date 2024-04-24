@@ -27,7 +27,7 @@ However, to start the local server, write
 npm run start
 ```
 
-3. **APIs Endpoints:**
+ ### APIs Endpoints
 ```bash
 BaseURL (server): https://minly-task-jc4q.onrender.com
 BaseURL (local): http://localhost:3001 
@@ -37,7 +37,7 @@ GET -> /: Retrieve all media.
 DELETE -> /delete/:id: Delete a media item by its ID.
 PUT -> /toggle/:id: Toggle the like status of a media item.
 
-5. **Architecture:**
+### Architecture
 This project is utilizing the MVC architecture, where the controller communicates with the model to do database operations.
 The view (frontend) communicates with the controller, via urls, to fetch data and such
 The routers are responsible for the navigation of endpoints
