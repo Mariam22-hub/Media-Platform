@@ -43,6 +43,6 @@ The view (frontend) communicates with the controller, via urls, to fetch data an
 The routers are responsible for the navigation of endpoints
 
 ### Additional Information
-- **Server**: According to the Render website, there might be a delay for free instance users, this delay can 50 seconds or more, especially after idleness
+- **Server**: According to the Render website, there might be a delay for free instance users, this delay can be 50 seconds or more, especially after idleness
 
 
