@@ -32,10 +32,10 @@ npm run start
 BaseURL (server): https://minly-task-jc4q.onrender.com
 BaseURL (local): http://localhost:3001 
 ```
-POST -> /upload: Upload a media file. Requires a multipart/form-data request with a file field.
-GET -> /: Retrieve all media.
-DELETE -> /delete/:id: Delete a media item by its ID.
-PUT -> /toggle/:id: Toggle the like status of a media item.
+1) POST -> /upload: Upload a media file. Requires a multipart/form-data request with a file field.
+2) GET -> /: Retrieve all media.
+3) DELETE -> /delete/:id: Delete a media item by its ID.
+4) PUT -> /toggle/:id: Toggle the like status of a media item.
 
 ### Architecture
 This project is utilizing the MVC architecture, where the controller communicates with the model to do database operations.
